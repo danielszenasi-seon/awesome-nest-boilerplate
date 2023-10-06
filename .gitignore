@@ -1,6 +1,8 @@
 # compiled output
 /dist
 /node_modules
+/docs/.vitepress/dist
+.vitepress/cache
 
 # Logs
 logs

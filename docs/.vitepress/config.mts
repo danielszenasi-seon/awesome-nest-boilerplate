@@ -4,19 +4,24 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Awesome nestjs boilerplate",
   description: "A VitePress Site",
+  base: "/awesome-nest-boilerplate/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Architecture', link: '/architecture' }
     ],
 
     sidebar: [
       {
         text: 'Examples',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Architecture', link: '/architecture' },
+          { text: 'Monitoring', link: '/monitoring' },
+          { text: 'Database', link: '/database' },
+          { text: 'Pipelines', link: '/pipelines' },
+          { text: 'Contributing', link: '/contributing' },
+          { text: 'Code quality', link: '/code-quality' }
         ]
       }
     ],
