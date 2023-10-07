@@ -5,9 +5,11 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: [
+    'prettier'
+  ],
   extends: [
-    'plugin:@typescript-eslint/recommended',
+    './node_modules/@seontechnologies/seon-eslint-config/typescript.eslint',
     'plugin:prettier/recommended',
   ],
   root: true,
@@ -17,9 +19,8 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    'no-useless-constructor': 'off',
+    'class-methods-use-this': 'off',
+    'prettier/prettier': ['error', { singleQuote: true, trailingComma: 'all', tabWidth: 2, bracketSpacing: true }],
   },
 };
