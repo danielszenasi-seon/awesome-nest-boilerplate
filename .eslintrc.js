@@ -5,9 +5,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   extends: [
     './node_modules/@seontechnologies/seon-eslint-config/typescript.eslint',
     'plugin:prettier/recommended',
@@ -21,6 +19,15 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'class-methods-use-this': 'off',
-    'prettier/prettier': ['error', { singleQuote: true, trailingComma: 'all', tabWidth: 2, bracketSpacing: true }],
+    'import-newlines/enforce': ['error', 4, 120],
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        trailingComma: 'all',
+        tabWidth: 2,
+        bracketSpacing: true,
+      },
+    ],
   },
 };

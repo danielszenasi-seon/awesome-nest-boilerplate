@@ -4,6 +4,8 @@
 /docs/.vitepress/dist
 .vitepress/cache
 
+.env
+
 # Logs
 logs
 *.log
