@@ -37,6 +37,7 @@
     "@seontechnologies/seon-eslint-config": "^2023.3.2-22-cdfba56",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "express-rate-limit": "^7.1.0",
     "nestjs-pino": "^3.5.0",
     "pg": "^8.11.3",
     "pino-http": "^8.5.0",
