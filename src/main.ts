@@ -63,6 +63,8 @@ async function bootstrap() {
   if (configService.documentationEnabled) {
     setupSwagger(app);
   }
-  await app.listen(3000);
+
+  const { port } = configService.appConfig;
+  await app.listen(port);
 }
 bootstrap();
