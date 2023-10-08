@@ -19,7 +19,7 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'class-methods-use-this': 'off',
-    'import-newlines/enforce': ['error', 4, 120],
+    'import-newlines/enforce': 'off',
     'prettier/prettier': [
       'error',
       {
