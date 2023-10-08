@@ -9,6 +9,9 @@ import { SharedModule } from './shared/shared.module';
 async function bootstrap() {
   initializeTransactionalContext();
   const app = await NestFactory.create(AppModule);
+
+  app.enableVersioning();
+
   app.useLogger(app.get(Logger));
 
   // TODO do we need this? https://github.com/iamolegga/nestjs-pino#expose-stack-trace-and-error-class-in-err-property
