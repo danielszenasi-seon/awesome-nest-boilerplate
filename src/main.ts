@@ -7,6 +7,11 @@ import {
   NestExpressApplication,
 } from '@nestjs/platform-express';
 import helmet from 'helmet';
+import {
+  HttpStatus,
+  UnprocessableEntityException,
+  ValidationPipe,
+} from '@nestjs/common';
 import { AppModule } from './app.module';
 import { setupSwagger } from './setup-swagger';
 import { ApiConfigService } from './shared/services/api-config.service';
@@ -37,6 +42,16 @@ async function bootstrap() {
   app.useGlobalFilters(
     new HttpExceptionFilter(reflector),
     new QueryFailedFilter(reflector),
+  );
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      transform: true,
+      dismissDefaultMessages: true,
+      exceptionFactory: (errors) => new UnprocessableEntityException(errors),
+    }),
   );
 
   app.useLogger(app.get(Logger));
