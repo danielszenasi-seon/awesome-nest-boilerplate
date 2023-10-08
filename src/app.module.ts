@@ -5,6 +5,7 @@ import { addTransactionalDataSource } from 'typeorm-transactional';
 import { DataSource } from 'typeorm';
 import { SharedModule } from './shared/shared.module';
 import { ApiConfigService } from './shared/services/api-config.service';
+import { CatsModule } from './modules/cats/cats.module';
 
 @Module({
   imports: [
@@ -29,9 +30,7 @@ import { ApiConfigService } from './shared/services/api-config.service';
         );
       },
     }),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    CatsModule,
   ],
   providers: [],
 })
