@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { Logger } from 'nestjs-pino';
 import { initializeTransactionalContext } from 'typeorm-transactional';
 import rateLimit from 'express-rate-limit';
@@ -11,6 +11,8 @@ import { AppModule } from './app.module';
 import { setupSwagger } from './setup-swagger';
 import { ApiConfigService } from './shared/services/api-config.service';
 import { SharedModule } from './shared/shared.module';
+import { HttpExceptionFilter } from './filters/bad-request.filter';
+import { QueryFailedFilter } from './filters/query-failed.filter';
 
 async function bootstrap() {
   initializeTransactionalContext();
@@ -29,6 +31,13 @@ async function bootstrap() {
   );
 
   app.enableVersioning();
+
+  const reflector = app.get(Reflector);
+
+  app.useGlobalFilters(
+    new HttpExceptionFilter(reflector),
+    new QueryFailedFilter(reflector),
+  );
 
   app.useLogger(app.get(Logger));
 
