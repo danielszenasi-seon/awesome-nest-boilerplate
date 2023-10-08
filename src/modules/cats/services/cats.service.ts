@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { PinoLogger, InjectPinoLogger } from 'nestjs-pino';
 import { CreateCatDto } from '../dtos/create-cat.dto';
 import { Cat } from '../entities/cat.entity';
 
@@ -9,9 +10,12 @@ export class CatsService {
   constructor(
     @InjectRepository(Cat)
     private readonly catsRepository: Repository<Cat>,
+    @InjectPinoLogger(CatsService.name)
+    private readonly logger: PinoLogger,
   ) {}
 
   create(createUserDto: CreateCatDto): Promise<Cat> {
+    this.logger.debug('foo %s %o', 'bar', { baz: 'qux' });
     const cat = new Cat();
     cat.name = createUserDto.name;
     cat.age = createUserDto.age;

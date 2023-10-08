@@ -59,6 +59,14 @@ export class ApiConfigService {
     };
   }
 
+  get loggerConfig() {
+    return {
+      pinoHttp: {
+        transport: this.isDevelopment ? { target: 'pino-pretty' } : undefined,
+      },
+    };
+  }
+
   get postgresConfig(): TypeOrmModuleOptions {
     const entities = [
       `${__dirname}/../../modules/**/*.entity{.ts,.js}`,
