@@ -64,6 +64,11 @@ async function bootstrap() {
     setupSwagger(app);
   }
 
+  // Starts listening for shutdown hooks
+  if (!configService.isDevelopment) {
+    app.enableShutdownHooks();
+  }
+
   const { port } = configService.appConfig;
   await app.listen(port);
 }
