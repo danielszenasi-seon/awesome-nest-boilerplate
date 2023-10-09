@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
 import { DataSource } from 'typeorm';
 import { LoggerModule } from 'nestjs-pino';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { SharedModule } from './shared/shared.module';
 import { ApiConfigService } from './shared/services/api-config.service';
 import { CatsModule } from './modules/cats/cats.module';
@@ -19,6 +20,7 @@ import { HealthCheckerModule } from './modules/health-checker/health-checker.mod
       inject: [ApiConfigService],
     }),
     HealthCheckerModule,
+    PrometheusModule.register(),
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
