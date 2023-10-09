@@ -7,6 +7,7 @@ import { LoggerModule } from 'nestjs-pino';
 import { SharedModule } from './shared/shared.module';
 import { ApiConfigService } from './shared/services/api-config.service';
 import { CatsModule } from './modules/cats/cats.module';
+import { HealthCheckerModule } from './modules/health-checker/health-checker.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CatsModule } from './modules/cats/cats.module';
         configService.loggerConfig,
       inject: [ApiConfigService],
     }),
+    HealthCheckerModule,
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,

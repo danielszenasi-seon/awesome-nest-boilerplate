@@ -33,6 +33,7 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.1.13",
+    "@nestjs/terminus": "^10.1.1",
     "@nestjs/typeorm": "^10.0.0",
     "@seontechnologies/seon-eslint-config": "^2023.3.2-22-cdfba56",
     "class-transformer": "^0.5.1",
